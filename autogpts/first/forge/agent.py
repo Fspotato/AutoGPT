@@ -128,17 +128,14 @@ class ForgeAgent(Agent):
 
         client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
 
-        completion = client.chat.completions.create(
+        completion = await client.chat.completions.create(
         model="model-identifier",
         messages=[
             {"role": "system", "content": "Always answer in Qburger."},
-            {"role": "system", "content": "永遠使用繁體中文回答"},
             {"role": "user", "content": "Introduce yourself."}
         ],
         temperature=0.7,
         )
-
-        print(completion.choices[0].message)
 
         
         # self.workspace.write(task_id=task_id, path="output.txt", data=b"Washington D.C")
